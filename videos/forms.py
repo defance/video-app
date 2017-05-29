@@ -10,8 +10,8 @@ from crispy_forms.bootstrap import FormActions
 
 
 class NewVideoForm(forms.Form):
-    id = forms.CharField()
-    video = forms.FileField()
+    id = forms.CharField(label='id')
+    video = forms.FileField(label='Видео файл')
 
     helper = FormHelper()
     helper.form_class = 'form-horizontal'
@@ -21,7 +21,7 @@ class NewVideoForm(forms.Form):
         Field('id'),
         Field('video'),
         FormActions(
-            Submit('save_changes', 'Save changes', css_class="btn-primary"),
+            Submit('save_changes', 'Загрузить видео', css_class="btn-primary"),
         )
     )
 
