@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import twitter_bootstrap
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pipeline',
+    'twitter_bootstrap',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +121,62 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = './collected_static/'
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+bootstrap_less = os.path.join(os.path.dirname(twitter_bootstrap.__file__),
+                              'static', 'less')
+
+PIPELINE = {
+    'PIPELINE_ENABLED': True,
+    'COMPILERS': (
+        'pipeline.compilers.less.LessCompiler',
+    ),
+    'YUGLIFY_BINARY': os.path.join(os.path.dirname(BASE_DIR),
+                                   'node_env', 'bin', 'yuglify'),
+
+    'LESS_BINARY': os.path.join(os.path.dirname(BASE_DIR),
+                                'node_env', 'bin', 'lessc'),
+    'LESS_ARGUMENTS': u'--include-path={}'.format(
+        os.pathsep.join([bootstrap_less, ])
+    ),
+    'STYLESHEETS': {
+        'bootstrap': {
+            'source_filenames': (
+                'twitter_bootstrap/less/bootstrap.less',
+            ),
+            'output_filename': 'css/bootstrap.css',
+            'extra_context': {
+                'media': 'screen,projection',
+            },
+        },
+    }
+}
+
+PIPELINE_JS = {
+    'bootstrap': {
+        'source_filenames': (
+          'twitter_bootstrap/js/transition.js',
+          'twitter_bootstrap/js/modal.js',
+          'twitter_bootstrap/js/dropdown.js',
+          'twitter_bootstrap/js/scrollspy.js',
+          'twitter_bootstrap/js/tab.js',
+          'twitter_bootstrap/js/tooltip.js',
+          'twitter_bootstrap/js/popover.js',
+          'twitter_bootstrap/js/alert.js',
+          'twitter_bootstrap/js/button.js',
+          'twitter_bootstrap/js/collapse.js',
+          'twitter_bootstrap/js/carousel.js',
+          'twitter_bootstrap/js/affix.js',
+        ),
+        'output_filename': 'js/bootstrap.js',
+    },
+}
+
