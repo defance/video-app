@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pipeline',
     'twitter_bootstrap',
+    'crispy_forms',
 
     # actual apps
     'videos',
@@ -138,7 +139,7 @@ bootstrap_less = os.path.join(os.path.dirname(twitter_bootstrap.__file__),
                               'static', 'less')
 
 PIPELINE = {
-    'PIPELINE_ENABLED': True,
+    'PIPELINE_ENABLED': False,
     'COMPILERS': (
         'pipeline.compilers.less.LessCompiler',
     ),
@@ -183,3 +184,4 @@ PIPELINE_JS = {
     },
 }
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
