@@ -18,7 +18,7 @@ class Video(models.Model):
         ('error', u'Ошибка'),
     )
 
-    id = models.CharField(max_length=50)
+    id = models.CharField(max_length=50, primary_key=True)
     category = models.ForeignKey(Category)
     duration = models.CharField(max_length=50, blank=True, null=True)
     preview = models.ImageField(blank=True, null=True)
