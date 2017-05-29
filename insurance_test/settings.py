@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pipeline',
     'twitter_bootstrap',
+
+    # actual apps
+    'videos',
 ]
 
 MIDDLEWARE = [
