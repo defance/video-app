@@ -128,6 +128,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = './collected_static/'
 
+MEDIA_URL = '/uploaded/'
+MEDIA_ROOT = './uploaded/'
+
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 STATICFILES_FINDERS = (

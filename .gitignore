@@ -2,3 +2,6 @@
 
 .idea/
 collected_static/
+uploaded/
+
+*.sqlite3
