@@ -1,20 +1,24 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import redirect
-from django.views.generic.edit import FormView
-from django.urls import reverse
+from django.urls.base import reverse_lazy
+from django.views.generic.edit import CreateView
 
 from .forms import NewVideoForm
+from .models import Video
 
 
-class NewVideoView(FormView):
+class NewVideoView(CreateView):
     template_name = "videos/new_video.html"
     form_class = NewVideoForm
+    model = Video
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
-        form.video_upload()
-        return redirect(reverse('home'))
+
+        # Create convert task
+
+        return super(NewVideoView, self).form_valid(form)
 
 
 __all__ = ['NewVideoView']

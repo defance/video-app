@@ -7,14 +7,15 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Field
 from crispy_forms.bootstrap import FormActions
-from videos.models import Category
+
+from .models import Video
 
 
-class NewVideoForm(forms.Form):
-    id = forms.CharField(label='id')
-    video = forms.FileField(label='Видео файл')
-    category = forms.ModelChoiceField(label='Категория',
-                                      queryset=Category.objects.all())
+class NewVideoForm(forms.ModelForm):
+
+    class Meta:
+        model = Video
+        fields = ('id', 'video', 'category')
 
     helper = FormHelper()
     helper.form_class = 'form-horizontal'
@@ -28,6 +29,3 @@ class NewVideoForm(forms.Form):
             Submit('save_changes', 'Загрузить видео', css_class="btn-primary"),
         )
     )
-
-    def video_upload(self):
-        print "video upload"
