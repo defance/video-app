@@ -1,6 +1,9 @@
 from __future__ import unicode_literals
 
+import os
+
 from collections import defaultdict
+from django.core.files.storage import DefaultStorage
 from django.utils.translation import pgettext_lazy as _p
 from re import search as re_search
 from subprocess import check_output
@@ -67,6 +70,25 @@ def get_duration_str(info):
     return ' '.join(map(get_desc, ['h', 'm', 's']))
 
 
+def generate_video_thumbnail(video):
+    """
+    Executes ffmpeg to create thumbnail and saves it to static with a name of:
+
+    >> media_dir/preview/video_id.png
+
+    :param video: (Video) Video to create preview of
+    :return: Nothing
+    """
+    storage = DefaultStorage()
+    short_name = storage.get_available_name('preview/%s.png' % video.id)
+    filename = storage.path(short_name)
+    check_output([
+        'ffmpeg', '-i', video.video.path, '-an', '-ss', '00:00:00', '-r', '1',
+        '-vframes', '1', '-y', filename
+    ])
+    video.preview = short_name
+
+
 def process_video(video):
     try:
         video.status = 'processing'
@@ -74,6 +96,7 @@ def process_video(video):
         output = get_video_info(video)
         info = extract_duration_info(output)
         video.duration = get_duration_str(info)
+        generate_video_thumbnail(video)
         video.status = 'ready'
         video.save()
     except Exception:
