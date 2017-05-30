@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 10:26+0000\n"
+"POT-Creation-Date: 2017-05-30 10:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,29 +24,53 @@ msgstr ""
 msgid "Upload"
 msgstr "Загрузить"
 
-#: models.py:17
+#: models.py:19
 msgid "Loading"
 msgstr "Загружается"
 
-#: models.py:18
+#: models.py:20
 msgid "Loaded"
 msgstr "Загружен"
 
-#: models.py:19
+#: models.py:21
 msgid "Queued"
 msgstr "В очереди"
 
-#: models.py:20
+#: models.py:22
 msgid "Processing"
 msgstr "Обрабатывается"
 
-#: models.py:21
+#: models.py:23
 msgid "Ready"
 msgstr "Готов"
 
-#: models.py:22
+#: models.py:24
 msgid "Error"
 msgstr "Ошибка"
+
+#: models.py:27
+msgid "id"
+msgstr ""
+
+#: models.py:28
+msgid "Category"
+msgstr "Категория"
+
+#: models.py:30
+msgid "Duration"
+msgstr "Длительность"
+
+#: models.py:32
+msgid "Preview"
+msgstr "Превью"
+
+#: models.py:34
+msgid "Status"
+msgstr "Статус"
+
+#: models.py:35
+msgid "Video"
+msgstr "Видео"
 
 #: templates/videos/new_video.html:12
 msgid "Upload video"
