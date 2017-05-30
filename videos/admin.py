@@ -13,4 +13,4 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'category', 'video')
+    list_display = ('id', 'category', 'video', 'status',)
