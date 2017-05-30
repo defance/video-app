@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 13:01+0000\n"
+"POT-Creation-Date: 2017-05-30 16:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,24 @@ msgstr "Загрузить"
 #: forms.py:32
 msgid "Uploading..."
 msgstr "Идёт загрузка..."
+
+#: management/commands/process_videos.py:10
+msgid "Process all videos being in queued state."
+msgstr "Обрабаывает все видео со флагом стостояния \"В обработке\"."
+
+#: management/commands/process_videos.py:15
+msgid "Job finished."
+msgstr "Задача завершена."
+
+#: management/commands/process_videos.py:17
+#, python-format
+msgid "  * Successfully processed videos: %(successful)s"
+msgstr "  * Успешно обработанных видео: %(successful)s"
+
+#: management/commands/process_videos.py:21
+#, python-format
+msgid "  * Failed to process videos: %(failed)s"
+msgstr "  * Не удалось обработать видео: %(failed)s"
 
 #: models.py:22
 #, python-format
@@ -84,3 +102,18 @@ msgstr "Видео"
 #: templates/videos/new_video.html:12
 msgid "Upload video"
 msgstr "Загрузить видео"
+
+#: utils.py:11
+msgctxt "duration"
+msgid "hrs"
+msgstr "час"
+
+#: utils.py:12
+msgctxt "duration"
+msgid "min"
+msgstr "мин"
+
+#: utils.py:13
+msgctxt "duration"
+msgid "sec"
+msgstr "сек"
