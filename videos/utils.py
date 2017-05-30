@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-import os
-
 from collections import defaultdict
 from django.core.files.storage import DefaultStorage
 from django.utils.translation import pgettext_lazy as _p
