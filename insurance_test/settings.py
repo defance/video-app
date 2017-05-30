@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pipeline',
+    'jquery',
     'twitter_bootstrap',
     'crispy_forms',
 
@@ -161,6 +162,14 @@ PIPELINE = {
                 'media': 'screen,projection',
             },
         },
+    },
+    'JAVASCRIPT': {
+        'jquery': {
+            'source_filenames': (
+                'js/jquery.js',
+            ),
+            'output_filename': 'js/jquery.min.js',
+        }
     }
 }
 
