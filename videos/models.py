@@ -60,7 +60,7 @@ class Video(models.Model):
         max_length=30, choices=STATUS_CHOICES, null=True, blank=True,
         verbose_name=_('Status')
     )
-    video_validator = VideoValidator(content_types=['application/msword'])
+    video_validator = VideoValidator(content_types=['video/mp4', 'video/avi'])
     video = models.FileField(
         verbose_name=_('Video'), validators=[video_validator]
     )
