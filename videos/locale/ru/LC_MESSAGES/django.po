@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 10:43+0000\n"
+"POT-Creation-Date: 2017-05-30 12:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,13 +20,17 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: forms.py:30
+#: forms.py:31
 msgid "Upload"
 msgstr "Загрузить"
 
+#: forms.py:32
+msgid "Uploading..."
+msgstr "Идёт загрузка..."
+
 #: models.py:19
 msgid "Loading"
-msgstr "Загружается"
+msgstr "Идёт загрузка"
 
 #: models.py:20
 msgid "Loaded"
@@ -48,27 +52,27 @@ msgstr "Готов"
 msgid "Error"
 msgstr "Ошибка"
 
-#: models.py:27
+#: models.py:28
 msgid "id"
 msgstr ""
 
-#: models.py:28
+#: models.py:30
 msgid "Category"
 msgstr "Категория"
 
-#: models.py:30
+#: models.py:32
 msgid "Duration"
 msgstr "Длительность"
 
-#: models.py:32
+#: models.py:35
 msgid "Preview"
 msgstr "Превью"
 
-#: models.py:34
+#: models.py:39
 msgid "Status"
 msgstr "Статус"
 
-#: models.py:35
+#: models.py:41
 msgid "Video"
 msgstr "Видео"
 

@@ -19,7 +19,7 @@ class NewVideoForm(forms.ModelForm):
         fields = ('id', 'video', 'category')
 
     helper = FormHelper()
-    helper.form_class = 'form-horizontal'
+    helper.form_class = 'form-horizontal upload-video'
     helper.label_class = 'col-md-3'
     helper.field_class = 'col-md-9'
     helper.layout = Layout(
@@ -27,6 +27,9 @@ class NewVideoForm(forms.ModelForm):
         Field('category'),
         Field('video'),
         FormActions(
-            Submit('save_changes', _('Upload'), css_class="btn-primary"),
+            Submit(
+                'save_changes', _('Upload'), css_class="btn-primary",
+                data_msg_uploading=_('Uploading...')
+            ),
         )
     )

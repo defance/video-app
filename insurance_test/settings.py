@@ -164,12 +164,18 @@ PIPELINE = {
         },
     },
     'JAVASCRIPT': {
+        'app': {
+            'source_filenames': (
+                'videos/app.js',
+            ),
+            'output_filename': 'js/app.min.js',
+        },
         'jquery': {
             'source_filenames': (
                 'js/jquery.js',
             ),
             'output_filename': 'js/jquery.min.js',
-        }
+        },
     }
 }
 
