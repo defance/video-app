@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Field
@@ -26,6 +27,6 @@ class NewVideoForm(forms.ModelForm):
         Field('category'),
         Field('video'),
         FormActions(
-            Submit('save_changes', 'Загрузить видео', css_class="btn-primary"),
+            Submit('save_changes', _('Upload'), css_class="btn-primary"),
         )
     )

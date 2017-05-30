@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 
 class Category(models.Model):
@@ -13,12 +14,12 @@ class Category(models.Model):
 class Video(models.Model):
 
     STATUS_CHOICES = (
-        ('loading', u'Загружается'),
-        ('loaded', u'Загружен'),
-        ('queued', u'В очереди'),
-        ('processing', u'Обрабатывается'),
-        ('ready', u'Готово'),
-        ('error', u'Ошибка'),
+        ('loading', _(u'Loading')),
+        ('loaded', _(u'Loaded')),
+        ('queued', _(u'Queued')),
+        ('processing', _(u'Processing')),
+        ('ready', _(u'Ready')),
+        ('error', _(u'Error')),
     )
 
     id = models.CharField(max_length=50, primary_key=True)
