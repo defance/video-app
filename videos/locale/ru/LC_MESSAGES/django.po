@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 12:09+0000\n"
+"POT-Creation-Date: 2017-05-30 13:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,51 +28,56 @@ msgstr "Загрузить"
 msgid "Uploading..."
 msgstr "Идёт загрузка..."
 
-#: models.py:19
+#: models.py:22
+#, python-format
+msgid "File of type %(content_type)s are not supported."
+msgstr "Файлы типа %(content_type)s не поддерживаются."
+
+#: models.py:41
 msgid "Loading"
 msgstr "Идёт загрузка"
 
-#: models.py:20
+#: models.py:42
 msgid "Loaded"
 msgstr "Загружен"
 
-#: models.py:21
+#: models.py:43
 msgid "Queued"
 msgstr "В очереди"
 
-#: models.py:22
+#: models.py:44
 msgid "Processing"
 msgstr "Обрабатывается"
 
-#: models.py:23
+#: models.py:45
 msgid "Ready"
 msgstr "Готов"
 
-#: models.py:24
+#: models.py:46
 msgid "Error"
 msgstr "Ошибка"
 
-#: models.py:28
+#: models.py:50
 msgid "id"
 msgstr ""
 
-#: models.py:30
+#: models.py:52
 msgid "Category"
 msgstr "Категория"
 
-#: models.py:32
+#: models.py:54
 msgid "Duration"
 msgstr "Длительность"
 
-#: models.py:35
+#: models.py:57
 msgid "Preview"
 msgstr "Превью"
 
-#: models.py:39
+#: models.py:61
 msgid "Status"
 msgstr "Статус"
 
-#: models.py:41
+#: models.py:65
 msgid "Video"
 msgstr "Видео"
 
