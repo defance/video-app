@@ -13,8 +13,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import twitter_bootstrap
 
+from path import Path
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).abspath().dirname().dirname()
+ROOT_DIR = BASE_DIR.dirname()
+VAR_DIR = ROOT_DIR / 'var'
+VAR_DIR.makedirs_p()
 
 
 # Quick-start development settings - unsuitable for production
@@ -88,7 +93,7 @@ WSGI_APPLICATION = 'insurance_test.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': VAR_DIR / 'db.sqlite3',
     }
 }
 
@@ -130,10 +135,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = './collected_static/'
+STATIC_ROOT = VAR_DIR / 'collected_static'
 
 MEDIA_URL = '/uploaded/'
-MEDIA_ROOT = './uploaded/'
+MEDIA_ROOT = VAR_DIR / 'uploaded'
+PREVIEW_DIR = MEDIA_ROOT / 'preview'
+PREVIEW_DIR.makedirs_p()
+
 
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
