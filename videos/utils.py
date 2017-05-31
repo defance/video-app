@@ -68,7 +68,7 @@ def get_duration_str(info):
     return ' '.join(map(get_desc, ['h', 'm', 's']))
 
 
-def generate_video_thumbnail(video):
+def generate_video_thumbnail(video, size=150):
     """
     Executes ffmpeg to create thumbnail and saves it to static with a name of:
 
@@ -81,8 +81,11 @@ def generate_video_thumbnail(video):
     short_name = storage.get_available_name('preview/%s.png' % video.id)
     filename = storage.path(short_name)
     check_output([
-        'ffmpeg', '-i', video.video.path, '-an', '-ss', '00:00:00', '-r', '1',
-        '-vframes', '1', '-y', filename
+        'convert',  video.video.path+'[1]',
+        '-resize', '{size}x{size}^'.format(size=size),
+        '-gravity', 'center',
+        '-extent', '{size}x{size}'.format(size=size),
+        filename
     ])
     video.preview = short_name
 
