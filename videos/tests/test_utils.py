@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import unittest
 
-from django.utils import translation
 from django.utils.translation import pgettext as _p, ugettext as _u
 
 from ..utils import (extract_raw_duration_info, extract_duration_info,
