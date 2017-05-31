@@ -5,8 +5,13 @@
 
 {% block content %}
     <h1>Загрузить новое видео</h1>
-    <div class="well col-md-6">
-        <p><strong>{% trans "Upload video" %}</strong></p>
-        {% crispy form %}
+    <div class="col-md-6">
+        <p class="row text-right">
+            <a href="{% url 'all_videos' %}"><span class="glyphicon glyphicon-list"></span> {% trans 'All videos' %}</a>
+        </p>
+        <div class="well row">
+            <p><strong>{% trans "Upload video" %}</strong></p>
+            {% crispy form %}
+        </div>
     </div>
 {% endblock %}
