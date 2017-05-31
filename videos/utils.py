@@ -75,6 +75,8 @@ def generate_video_thumbnail(video, size=150):
     >> media_dir/preview/video_id.png
 
     :param video: (Video) Video to create preview of
+    :param size: (int) Dimensional size (in px) of thumbnail, greater than 0,
+                       default 150
     :return: Nothing
     """
     storage = DefaultStorage()
