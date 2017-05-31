@@ -4,6 +4,11 @@
 
 {% block content %}
     <h1>Список видеозаписей</h1>
+    <div class="text-right">
+        <a class="btn btn-primary" href="{% url 'home' %}">
+            <span class="glyphicon glyphicon-plus"></span> {% trans 'Add video'%}
+        </a>
+    </div>
     <table class="table table-condensed">
         <thead>
             <tr>
