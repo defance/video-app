@@ -27,6 +27,7 @@ SECRET_KEY = '&h5mjja1y47bo%%68b)f_zdu3+q-o^2!pbs1yy2ez=7*32!ao7'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+INTERNAL_IPS = ['127.0.0.1']
 
 
 # Application definition
@@ -45,6 +46,8 @@ INSTALLED_APPS = [
 
     # actual apps
     'videos',
+
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'insurance_test.urls'
