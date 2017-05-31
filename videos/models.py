@@ -3,8 +3,8 @@
 from __future__ import unicode_literals
 
 import mimetypes
-from django.core.exceptions import ValidationError
 
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -64,3 +64,8 @@ class Video(models.Model):
     video = models.FileField(
         verbose_name=_('Video'), validators=[video_validator]
     )
+
+    def get_duration_display(self):
+        # To avoid circular import do it here...
+        from .utils import get_duration_str, extract_duration_info
+        return get_duration_str(extract_duration_info(self.duration))

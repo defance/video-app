@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from collections import defaultdict
 from django.core.files.storage import DefaultStorage
-from django.utils.translation import pgettext_lazy as _p
+from django.utils.translation import pgettext_lazy as _p, ugettext_lazy as _u
 from re import search as re_search
 from subprocess import check_output
 
@@ -36,6 +36,20 @@ def get_video_info(video):
     ])
 
 
+def extract_raw_duration_info(output):
+    """
+    Extract rew duration info from ffprobe output. Returns str containing video
+    duration in format:
+
+    >> hours:minutes:seconds.micros
+
+    :param output: (str) Previous output of ffprobe
+    :return: (str) Str with durations
+    """
+    re_exp = 'duration=(\d*:\d*:\d*\.\d)'
+    return re_search(re_exp, output).groups()[0]
+
+
 def extract_duration_info(output):
     """
     Extract duration info from ffprobe output. Returns dict containing video
@@ -44,11 +58,12 @@ def extract_duration_info(output):
     :param output: (str) Previous output of ffprobe
     :return: (dict: str => float) Dict with durations
     """
-    re_exp = 'duration=(?P<h>\d*):(?P<m>\d*):(?P<s>\d*.\d*)'
+    re_exp = '(?P<h>\d*):(?P<m>\d*):(?P<s>\d*.\d*)'
+    re_res = re_search(re_exp, output)
     return dict(map(
         lambda (key, val): (key, float(val)),
-        re_search(re_exp, output).groupdict().items()
-    ))
+        re_res.groupdict().items()
+    )) if re_res else {}
 
 
 def get_duration_str(info):
@@ -65,7 +80,7 @@ def get_duration_str(info):
             'dur': info[key],
             'desc': TIME_DICT[key]
         } if info[key] > 0 else ''
-    return ' '.join(map(get_desc, ['h', 'm', 's']))
+    return ' '.join(map(get_desc, ['h', 'm', 's'])) if info else _u('Unknown')
 
 
 def generate_video_thumbnail(video, size=150):
@@ -97,8 +112,7 @@ def process_video(video):
         video.status = 'processing'
         video.save()
         output = get_video_info(video)
-        info = extract_duration_info(output)
-        video.duration = get_duration_str(info)
+        video.duration = extract_raw_duration_info(output)
         generate_video_thumbnail(video)
         video.status = 'ready'
         video.save()
