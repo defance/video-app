@@ -25,7 +25,7 @@
                     <td>{{ video.id }}</td>
                     <td>{{ video.category }}</td>
                     <td>{{ video.get_duration_display }}</td>
-                    <td>{{ video.preview }}</td>
+                    <td>{% if video.preview %}<img src="{{ video.preview.url }}"/>{% endif %}</td>
                     <td>{{ video.get_status_display }}</td>
                 </tr>
             {% endfor %}
