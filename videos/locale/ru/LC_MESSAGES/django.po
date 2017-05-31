@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-30 16:38+0000\n"
+"POT-Creation-Date: 2017-05-31 09:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,20 +28,20 @@ msgstr "Загрузить"
 msgid "Uploading..."
 msgstr "Идёт загрузка..."
 
-#: management/commands/process_videos.py:10
+#: management/commands/process_videos.py:11
 msgid "Process all videos being in queued state."
 msgstr "Обрабаывает все видео со флагом стостояния \"В обработке\"."
 
-#: management/commands/process_videos.py:15
+#: management/commands/process_videos.py:22
 msgid "Job finished."
 msgstr "Задача завершена."
 
-#: management/commands/process_videos.py:17
+#: management/commands/process_videos.py:24
 #, python-format
 msgid "  * Successfully processed videos: %(successful)s"
 msgstr "  * Успешно обработанных видео: %(successful)s"
 
-#: management/commands/process_videos.py:21
+#: management/commands/process_videos.py:28
 #, python-format
 msgid "  * Failed to process videos: %(failed)s"
 msgstr "  * Не удалось обработать видео: %(failed)s"
@@ -83,15 +83,15 @@ msgstr ""
 msgid "Category"
 msgstr "Категория"
 
-#: models.py:54
+#: models.py:54 templates/videos/video_list.html:17
 msgid "Duration"
 msgstr "Длительность"
 
-#: models.py:57
+#: models.py:57 templates/videos/video_list.html:18
 msgid "Preview"
 msgstr "Превью"
 
-#: models.py:61
+#: models.py:61 templates/videos/video_list.html:19
 msgid "Status"
 msgstr "Статус"
 
@@ -99,21 +99,37 @@ msgstr "Статус"
 msgid "Video"
 msgstr "Видео"
 
-#: templates/videos/new_video.html:12
+#: templates/videos/new_video.html:10
+msgid "All videos"
+msgstr "Список видеозаписей"
+
+#: templates/videos/new_video.html:13
 msgid "Upload video"
 msgstr "Загрузить видео"
 
-#: utils.py:11
+#: templates/videos/video_list.html:9
+msgid "Add video"
+msgstr "Загрузить видео"
+
+#: templates/videos/video_list.html:15
+msgid "UUID"
+msgstr ""
+
+#: templates/videos/video_list.html:16
+msgid "Video category"
+msgstr "Категория"
+
+#: utils.py:12
 msgctxt "duration"
 msgid "hrs"
 msgstr "час"
 
-#: utils.py:12
+#: utils.py:13
 msgctxt "duration"
 msgid "min"
 msgstr "мин"
 
-#: utils.py:13
+#: utils.py:14
 msgctxt "duration"
 msgid "sec"
 msgstr "сек"
