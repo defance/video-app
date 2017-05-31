@@ -58,7 +58,7 @@ class Video(models.Model):
     )
     status = models.CharField(
         max_length=30, choices=STATUS_CHOICES, null=True, blank=True,
-        verbose_name=_('Status')
+        verbose_name=_('Status'), default='loaded'
     )
     video_validator = VideoValidator(content_types=['video/mp4', 'video/avi'])
     video = models.FileField(
