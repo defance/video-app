@@ -25,7 +25,7 @@ class NewVideoForm(forms.ModelForm):
     helper.layout = Layout(
         Field('id'),
         Field('category'),
-        Field('video'),
+        Field('video', accept='.mp4, .avi'),
         FormActions(
             Submit(
                 'save_changes', _('Upload'), css_class="btn-primary",
