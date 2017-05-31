@@ -16,7 +16,7 @@ import twitter_bootstrap
 from path import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = Path(__file__).abspath().dirname().dirname()
+BASE_DIR = Path(__file__).abspath().dirname().dirname().dirname()
 ROOT_DIR = BASE_DIR.dirname()
 VAR_DIR = ROOT_DIR / 'var'
 VAR_DIR.makedirs_p()
@@ -27,9 +27,6 @@ VAR_DIR.makedirs_p()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '&h5mjja1y47bo%%68b)f_zdu3+q-o^2!pbs1yy2ez=7*32!ao7'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 INTERNAL_IPS = ['127.0.0.1']
@@ -51,8 +48,6 @@ INSTALLED_APPS = [
 
     # actual apps
     'videos',
-
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -63,7 +58,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'insurance_test.urls'
@@ -101,20 +95,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    # },
-]
+AUTH_PASSWORD_VALIDATORS = []
 
 
 # Internationalization
