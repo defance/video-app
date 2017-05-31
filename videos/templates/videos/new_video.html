@@ -1,21 +1,11 @@
-{% load i18n %}
-{% load pipeline %}
+{% extends "videos/base.html" %}
+
 {% load crispy_forms_tags %}
+{% load i18n %}
 
-<html>
-<head>
-    {% stylesheet 'bootstrap' %}
-</head>
-<body>
-
-<div class="well col-md-6">
-    <p><strong>{% trans "Upload video" %}</strong></p>
-    {% crispy form %}
-</div>
-
-
-{% javascript 'jquery' %}
-{% javascript 'app' %}
-
-</body>
-</html>
+{% block content %}
+    <div class="well col-md-6">
+        <p><strong>{% trans "Upload video" %}</strong></p>
+        {% crispy form %}
+    </div>
+{% endblock %}

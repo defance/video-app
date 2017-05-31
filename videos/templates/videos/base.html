@@ -1,0 +1,12 @@
+{% load i18n %}
+{% load pipeline %}
+
+<html>
+<head>
+    {% stylesheet 'bootstrap' %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+    {% javascript 'jquery' %}
+    {% javascript 'app' %}
+</body>
