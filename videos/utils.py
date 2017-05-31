@@ -9,9 +9,9 @@ from subprocess import check_output
 from .models import Video
 
 TIME_DICT = {
-    'h': _p('duration', 'hrs'),
-    'm': _p('duration', 'min'),
-    's': _p('duration', 'sec')
+    'h': (_p('duration', 'hrs'), None),
+    'm': (_p('duration', 'min'), None),
+    's': (_p('duration', 'sec'), '.2'),
 }
 
 
@@ -76,12 +76,23 @@ def get_duration_str(info):
     :param info: (dict: str -> float)
     :return: (str)
     """
-    def get_desc(key):
-        return "%(dur).2f %(desc)s" % {
-            'dur': info[key],
-            'desc': TIME_DICT[key]
-        } if info[key] > 0 else ''
-    return ' '.join(map(get_desc, ['h', 'm', 's'])) if info else _u('Unknown')
+    if not info:
+        return _u('Unknown')
+
+    base_str = "{{dur{pr}}} {{desc}}"
+
+    # This probably should be split into 3 modules, though all tests are ok
+    def get_desc(dur):
+        if not info.get(dur, 0):
+            return None
+        desc, precision = TIME_DICT.get(dur, (None, None))
+        if desc is None:
+            return None
+        precision = ":{}f".format(precision) if precision else ''
+        return base_str.format(pr=precision).format(dur=info[dur], desc=desc)
+
+    return ' '.join(filter(None, map(get_desc, ['h', 'm', 's']))) or \
+           _u('Unknown')
 
 
 def generate_video_thumbnail(video, size=150):
