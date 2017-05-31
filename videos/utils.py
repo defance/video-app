@@ -46,8 +46,9 @@ def extract_raw_duration_info(output):
     :param output: (str) Previous output of ffprobe
     :return: (str) Str with durations
     """
-    re_exp = 'duration=(\d*:\d*:\d*\.\d)'
-    return re_search(re_exp, output).groups()[0]
+    re_exp = 'duration=(\d*:\d*:\d*\.\d*)'
+    re_res = re_search(re_exp, output)
+    return re_res.groups()[0] if re_res is not None else None
 
 
 def extract_duration_info(output):
