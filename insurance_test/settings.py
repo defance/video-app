@@ -156,6 +156,12 @@ PIPELINE = {
         os.pathsep.join([bootstrap_less, ])
     ),
     'STYLESHEETS': {
+        'app': {
+            'source_filenames': (
+                'videos/app.less',
+            ),
+            'output_filename': 'css/app.css',
+        },
         'bootstrap': {
             'source_filenames': (
                 'twitter_bootstrap/less/bootstrap.less',
