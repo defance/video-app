@@ -115,10 +115,16 @@ def process_videos(process=False):
     :return: (int) Number of videos processed
     """
 
-    videos = Video.objects.filter(status='queued')
+    videos = Video.objects.filter(status__in=['loaded', 'queued'])
     report = defaultdict(int)
 
     for video in videos:
-        report[process_video(video) if process else True] += 1
+        if video.status != 'queued':
+            video.status = 'queued'
+            video.save()
+
+    for video in videos:
+        if video.status == 'queued':
+            report[process_video(video) if process else True] += 1
 
     return report
