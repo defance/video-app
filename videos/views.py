@@ -14,7 +14,7 @@ class NewVideoView(CreateView):
     template_name = "videos/new_video.html"
     form_class = NewVideoForm
     model = Video
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('all_videos')
 
     def __init__(self, **kwargs):
         super(NewVideoView, self).__init__(**kwargs)
