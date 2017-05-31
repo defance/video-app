@@ -59,7 +59,7 @@ def extract_duration_info(output):
     :return: (dict: str => float) Dict with durations
     """
     re_exp = '(?P<h>\d*):(?P<m>\d*):(?P<s>\d*.\d*)'
-    re_res = re_search(re_exp, output)
+    re_res = re_search(re_exp, output or '')
     return dict(map(
         lambda (key, val): (key, float(val)),
         re_res.groupdict().items()
