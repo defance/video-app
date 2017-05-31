@@ -20,7 +20,7 @@
                     <td>{{ video.category }}</td>
                     <td>{{ video.duration }}</td>
                     <td>{{ video.preview }}</td>
-                    <td>{{ video.status }}</td>
+                    <td>{{ video.get_status_display }}</td>
                 </tr>
             {% endfor %}
         </tbody>
