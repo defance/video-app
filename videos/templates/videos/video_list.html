@@ -1,0 +1,24 @@
+{% load i18n %}
+
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>{% trans "UUID" %}</th>
+            <th>{% trans "Video category" %}</th>
+            <th>{% trans "Duration" %}</th>
+            <th>{% trans "Preview" %}</th>
+            <th>{% trans "Status" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for video in video_list %}
+            <tr>
+                <td>{{ video.id }}</td>
+                <td>{{ video.category }}</td>
+                <td>{{ video.duration }}</td>
+                <td>{{ video.preview }}</td>
+                <td>{{ video.status }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
