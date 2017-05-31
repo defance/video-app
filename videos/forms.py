@@ -18,18 +18,21 @@ class NewVideoForm(forms.ModelForm):
         model = Video
         fields = ('id', 'video', 'category')
 
-    helper = FormHelper()
-    helper.form_class = 'form-horizontal upload-video'
-    helper.label_class = 'col-md-3'
-    helper.field_class = 'col-md-9'
-    helper.layout = Layout(
-        Field('id'),
-        Field('category'),
-        Field('video', accept='.mp4, .avi'),
-        FormActions(
-            Submit(
-                'save_changes', _('Upload'), css_class="btn-primary",
-                data_msg_uploading=_('Uploading...')
-            ),
+    def __init__(self, *args, **kwargs):
+        self.random_id = kwargs.pop('random_id')
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal upload-video'
+        self.helper.label_class = 'col-md-3'
+        self.helper.field_class = 'col-md-9'
+        self.helper.layout = Layout(
+            Field('id', placeholder=self.random_id),
+            Field('category'),
+            Field('video', accept='.mp4, .avi'),
+            FormActions(
+                Submit(
+                    'save_changes', _('Upload'), css_class="btn-primary",
+                    data_msg_uploading=_('Uploading...')
+                ),
+            )
         )
-    )
+        super(NewVideoForm, self).__init__(*args, **kwargs)
