@@ -1,3 +1,4 @@
+six==1.10.0
 django==1.11.1
 django-pipeline==1.6.13
 django-twitter-bootstrap==3.3.0
