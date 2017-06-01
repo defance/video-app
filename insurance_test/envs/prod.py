@@ -20,3 +20,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 PIPELINE['PIPELINE_ENABLED'] = True
+
+PIPELINE['YUGLIFY_BINARY'] = os.path.join(os.path.dirname(ROOT_DIR), 'node_env', 'bin', 'yuglify')
+PIPELINE['LESS_BINARY'] = os.path.join(os.path.dirname(ROOT_DIR), 'node_env', 'bin', 'lessc')
