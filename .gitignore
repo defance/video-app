@@ -5,3 +5,6 @@ collected_static/
 uploaded/
 
 *.sqlite3
+
+# Since we use sass, ignore all css
+**/static/**/*.css
